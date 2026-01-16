@@ -168,6 +168,8 @@ nav a:hover {
     background: rgba(255,152,0,0.25);
 }
 
+
+
 /* =============================================
 HERO SECTION
 ============================================= */
@@ -227,8 +229,8 @@ HERO SECTION
 
 .hero .card .text {
     padding: 2.5vw;
-    font-size: 1.2vw;
-    font-weight: 900;
+    font-size: 0.2vw;
+    font-weight: 90;
     text-align: center;
     color: white;
     background: rgba(0,0,0,0.35);
@@ -239,6 +241,31 @@ HERO SECTION
 }
 
 .hero .card:hover img { transform: scale(1.1); }
+
+
+
+.hero h1 {
+    position: absolute;
+    top: 50%; /* منتصف القسم عموديًا */
+    left: 50%; /* منتصف القسم أفقيًا */
+    transform: translate(-50%, -50%);
+    font-size: 1vw;
+    font-weight: 90;
+    color: white;
+    text-align: center;
+
+    /* الخلفية الشفافة */
+    background: rgba(0, 0, 0, 0.35); /* لون أسود شفاف */
+    padding: 1vw 2vw;
+    border-radius: 20px;
+
+    /* تحسين المظهر */
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+
+
+
 
 /* =============================================
 HERO CARDS - تعديل حجم الصور الأربع الأولى لتكون أصغر وفي سطر واحد
@@ -255,7 +282,7 @@ HERO CARDS - تعديل حجم الصور الأربع الأولى لتكون �
 .hero .overlay .card {
     width: 300px;            /* تصغير حجم كل بطاقة */
     height: 280px;           /* تصغير ارتفاع كل بطاقة */
-    border-radius: 30px;     /* تقليل الانحناء ليناسب الحجم الجديد */
+    border-radius: 40px;     /* تقليل الانحناء ليناسب الحجم الجديد */
 }
 
 .hero .overlay .card img {
@@ -263,6 +290,44 @@ HERO CARDS - تعديل حجم الصور الأربع الأولى لتكون �
     height: 100%;            /* ملء البطاقة رأسياً */
     object-fit: cover;       /* المحافظة على نسبة الصورة */
     border-radius: 30px;     /* نفس انحناء البطاقة */
+}
+
+
+/* =============================================
+HERO TEXT BOX ABOVE CARDS
+============================================= */
+.hero h1 {
+    position: relative; /* بدل absolute حتى يكون داخل التدفق الطبيعي */
+    top: 0; /* إزالة أي ازاحة سابقة */
+    left: 0;
+    transform: none; /* إزالة التحويل القديم */
+    margin: 0 auto 3vw auto; /* مركز أفقي + مسافة أسفل المربع */
+    display: inline-block;
+    font-size: 0vw;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+
+    /* الخلفية الشفافة */
+    background: rgba(0, 0, 0, 0.40);
+    padding: 30vw 0vw;
+    border-radius: 10px;
+
+    /* تحسين المظهر */
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+/* =============================================
+HERO OVERLAY - الصور الأربع تتحرك أسفل النص
+============================================= */
+.hero .overlay {
+    margin-top: -25vw; /* مسافة بين المربع الشفاف والصور */
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10vw;
+    padding: 100 2vw 2vw 2vw; /* إزالة ال padding العلوي القديم */
 }
 
 
@@ -402,137 +467,142 @@ ABOUT, TEAM, PLANTS, BIRDS, MOUNTAINS - نص فوق الصورة
     text-align: center;
 }
 
-
-
-/* =============================================
-SERVICES SECTION – CIRCULAR DESIGN
-============================================= */
-.services-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2vw;
-    padding: 3vw 1vw;
-    position: relative;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(8px);
-    width: 95%;
-    margin: 2vw auto;
-    border-radius: 95px;
-}
-
-.services-section h2 {
-    font-size: 3.5vw;
-    font-weight: 800;
-    text-align: center;
-    background: linear-gradient(90deg,#ff3cac,#784ba0,#2b86c5);
-    -webkit-background-clip: text;
-    color: transparent;
-    margin-bottom: 2vw;
-}
-
-/* Cards Container */
-.services-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 دوائر في الصف */
-    gap: 3vw;
-    justify-items: center;
-    width: 100%;
-}
-
-/* Service Card – Circle */
-.service-card {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%; /* دائرة كاملة */
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(40px);
-    box-shadow: 0 0 30px rgba(255,60,172,0.4);
-    border: 2px solid rgba(255,255,255,0.2);
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.8vw;
-    transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
-}
-
-/* Icon */
-.service-card i {
-    font-size: 3.2vw;
-    background: linear-gradient(90deg,#ff3cac,#784ba0,#2b86c5);
-    -webkit-background-clip: text;
-    color: transparent;
-    transition: transform 0.4s ease;
-}
-
-/* Title */
-.service-card h3 {
-    font-size: 1.3vw;
-    font-weight: 800;
-    background: linear-gradient(90deg,#ff3cac,#784ba0,#2b86c5);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-/* Text */
-.service-card p {
-    font-size: 1vw;
-    font-weight: 600;
-    line-height: 1.2;
-    max-width: 80%;
-}
-
-/* Hover Effect */
-.service-card:hover {
-    transform: translateY(-0.8vw) scale(1.08);
-    box-shadow: 0 0 60px rgba(255,60,172,0.9);
-    border: 2px solid rgba(255,60,172,0.7);
-}
-
-.service-card:hover i {
-    transform: scale(1.25) rotate(6deg);
-}
-
-/* =============================================
-MOBILE RESPONSIVE
-============================================= */
-@media (max-width: 768px) {
-
-    .services-cards {
-        grid-template-columns: repeat(3, 1fr); /* صفين في الجوال */
-        gap: 6vw;
-    }
-
-    .service-card {
-        width: 180px;
-        height: 180px;
-    }
-
-    .service-card i {
-        font-size: 9vw;
-    }
-
-    .service-card h3 {
-        font-size: 4vw;
-    }
-
-    .service-card p {
-        font-size: 3.2vw;
-    }
-
-    .services-section h2 {
-        font-size: 6vw;
-    }
-}
 /* تحريك الصورة قليلًا نحو اليمين */
 .about-content .icon-box {
     position: relative;   /* ضروري لتحريكها */
     left: -65px;           /* تحريك 100px نحو اليمين، غيّر الرقم حسب رغبتك */
+}
+
+
+/* ============================
+   SERVICES SECTION
+============================ */
+.services-section {
+    width: 100%;
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* Title */
+.services-section .section-title {
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(90deg,#ff3cac,#784ba0,#2b86c5);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Cards Container */
+.services-scroll {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 دوائر في الصف */
+    gap: 2.5rem;
+    justify-items: center;
+}
+
+/* Service Card (Circle) */
+.service-card {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.2);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+
+    color: white;
+    text-align: center;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+/* Icon */
+.service-card i {
+    font-size: 2.8rem;
+    background: linear-gradient(90deg,#ff3cac,#784ba0,#2b86c5);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: 0.4s ease;
+}
+
+/* Text */
+.service-card p {
+    font-size: 0.95rem;
+    font-weight: 600;
+    max-width: 80%;
+    line-height: 1.3;
+}
+
+/* Hover Effect */
+.service-card:hover {
+    transform: translateY(-10px) scale(1.07);
+    box-shadow: 0 0 45px rgba(255,60,172,0.6);
+}
+
+.service-card:hover i {
+    transform: scale(1.2) rotate(6deg);
+}
+
+
+
+/* خلفية شفافة لقسم الخدمات فقط */
+.services-section {
+    background: rgba(255, 255, 255, 0.06); /* شفافية خفيفة */
+    backdrop-filter: blur(10px);
+    border-radius: 60px;
+    padding: 4vw 2vw;
+}
+
+
+@media (max-width: 768px) {
+    .services-section {
+        border-radius: 30px;
+        padding: 6vw 3vw;
+    }
+}
+
+
+
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 1024px) {
+    .services-scroll {
+        grid-template-columns: repeat(3, 1fr); /* 3 في الصف */
+    }
+}
+
+@media (max-width: 768px) {
+    .services-scroll {
+        grid-template-columns: repeat(4, 1fr); /* 2 في الصف */
+        gap: 2rem;
+    }
+
+    .service-card {
+        width: 170px;
+        height: 170px;
+    }
+
+    .service-card i {
+        font-size: 2.4rem;
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+    }
 }
 
 
@@ -806,4 +876,5 @@ RESPONSIVE FIXED FOR MOBILE VS LAPTOP
     .contact-section, .contact-icon { width: 90%; height: auto; font-size: 4vw; }
     .contact-section h2 { font-size: 5vw; }
 }
+
 
